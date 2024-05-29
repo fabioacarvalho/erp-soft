@@ -9,6 +9,15 @@ register = template.Library()
 
 
 @register.simple_tag
+def linkurl(url):
+    
+    _url = url.split("/", 2)
+    print(f"Teste url: {_url}")
+
+    return _url
+
+
+@register.simple_tag
 def menu(user):
     from django.contrib.auth.models import User
     from base.models import Menu
@@ -19,13 +28,18 @@ def menu(user):
         _user = User.objects.get(pk=user)
 
         if _user.is_active:
-            print(f"\n\n passei aqui 2 USER: {_user.pk} \n\n")
-            if _user.is_staff:
-                return Menu.objects.filter(admin=False, support=True)
-            elif _user.is_superuser:
-                return Menu.objects.filter(admin=True, support=True)
+            # if _user.is_staff:
+            #     return Menu.objects.filter(admin=False, support=True)
+            # elif _user.is_superuser:
+            #     return Menu.objects.filter(admin=True, support=True)
             
             # return Menu.objects.filter(admin=False, support=False)
-            return [dict(name="TESTE", icon="teste"),]
+            return Menu.objects.all()
     except:
         return [dict(name="TESTE", icon="teste"),]
+
+
+@register.simple_tag
+def get_item(value, field_name=None):
+
+    return value

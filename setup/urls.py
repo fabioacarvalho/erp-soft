@@ -17,10 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path as url
 
-appname = "soft"
+app_name = 'soft'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-    path('soft/', include('views.urls')),
+    path('soft/', include(('views.urls', 'soft'), namespace='soft')), 
 ]
