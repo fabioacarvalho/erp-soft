@@ -111,3 +111,9 @@ pip install -r requirements.txt
 Acesse: [localhost:8000/admin](localhost:8000/admin)
 
 <br>
+
+## Images
+
+![alt text](static/img/image.png)
+<br>
+![alt text](static/img/image-1.png)

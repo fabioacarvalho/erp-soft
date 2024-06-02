@@ -10,10 +10,7 @@ register = template.Library()
 
 @register.simple_tag
 def linkurl(url):
-    
     _url = url.split("/", 2)
-    print(f"Teste url: {_url}")
-
     return _url
 
 
@@ -21,8 +18,6 @@ def linkurl(url):
 def menu(user):
     from django.contrib.auth.models import User
     from base.models import Menu
-
-    print(f"\n\n passei aqui USER: {user} \n\n")
 
     try:
         _user = User.objects.get(pk=user)
